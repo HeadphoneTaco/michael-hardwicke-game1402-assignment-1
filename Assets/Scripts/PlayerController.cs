@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
         
         public void Jump()
         {
-            Debug.Log("Jump");
+            
         }
         
         public void SetMoveInput(Vector2 input)
