@@ -1,28 +1,34 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerInputActions _testActions;
+    
+    [SerializeField] private float _maxSpeed = 8f;
+
+    private Rigidbody2D _rigidBody;
+    private Vector2 _moveInput;
+    
 
         void Awake()
         {
-            _testActions = new PlayerInputActions(); //we created an object of the class PlayerInputActions
-            _testActions.Enable(); //we turn it on to listen to key inputs
+             _rigidBody = GetComponent<Rigidbody2D>();
         }
-
-        void OnEnable()
-        {
-            _testActions.Player.Jump.performed += Jump;
-        }
-
-        void OnDisable()
-        {
-            _testActions.Player.Jump.performed -= Jump;
-        }
-
-        void Jump(InputAction.CallbackContext ctx)
+        
+        public void Jump()
         {
             Debug.Log("Jump");
         }
+        
+        public void SetMoveInput(Vector2 input)
+        {
+            _moveInput = input;
+        }
+        private void FixedUpdate()
+        {
+            float _moveForce = Mathf.Clamp(_maxSpeed - Mathf.Abs(_rigidBody.linearVelocity.x), 0f, _maxSpeed);
+            Vector2 force = new Vector2(_moveInput.x * _moveForce, 0f);
+            _rigidBody.AddForce(force);
+        }
+       
+       
     }
