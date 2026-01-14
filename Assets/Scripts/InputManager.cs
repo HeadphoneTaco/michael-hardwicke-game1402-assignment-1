@@ -8,9 +8,7 @@ public class InputManager : MonoBehaviour
 {
     private PlayerController _playerController;
     private PlayerInputActions _inputActions;
-    public  UnityAction<int> _openDoor;
-    private List<int> _collectedKeys = new List<int>();
-
+    
     private void Awake()
     {
     
@@ -24,14 +22,9 @@ public class InputManager : MonoBehaviour
         _inputActions.Player.Move.performed += OnMove;
         _inputActions.Player.Move.canceled += OnMoveCanceled;
         _inputActions.Player.Jump.performed += OnJump;
-        _openDoor += OnOpenDoor;
+        
     }
-
-    private void Start()
-    {
-        _openDoor?.Invoke(1); //Example of invoking the open door action with door number 1
-    }
-
+    
     private void OnDisable()
     {
         _inputActions.Player.Move.performed -= OnMove;
@@ -51,11 +44,7 @@ public class InputManager : MonoBehaviour
         _playerController.SetMoveInput(Vector2.zero);
         Debug.Log("Canceled"); //Log cancel movement action for debugging
     }
-
-    public void OnOpenDoor(int doorNumber)
-    {
-        Debug.Log("Door Opened " + doorNumber); //Log door open action for debugging
-    }
+    
     private void OnJump(InputAction.CallbackContext context)
     {
         _playerController.Jump();
