@@ -1,34 +1,53 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float jumpforce = 15f;
     
-    [SerializeField] private float _maxSpeed = 8f;
+    [SerializeField] private InputManager inputManager;
 
-    private Rigidbody2D _rigidBody;
-    private Vector2 _moveInput;
-    
+    private float _horizontalInput = 0f;
+    private Rigidbody2D _playerRb;
 
-        void Awake()
-        {
-             _rigidBody = GetComponent<Rigidbody2D>();
-        }
-        
-        public void Jump()
-        {
-            
-        }
-        
-        public void SetMoveInput(Vector2 input)
-        {
-            _moveInput = input;
-        }
-        private void FixedUpdate()
-        {
-            float _moveForce = Mathf.Clamp(_maxSpeed - Mathf.Abs(_rigidBody.linearVelocity.x), 0f, _maxSpeed);
-            Vector2 force = new Vector2(_moveInput.x * _moveForce, 0f);
-            _rigidBody.AddForce(force);
-        }
-       
-       
+    private void Awake()
+    {
+        _playerRb = GetComponent<Rigidbody2D>(); //get the Rigidbody2D component
     }
+    void OnEnable()
+    {
+        inputManager.OnJump += HandleJumpInput;
+        inputManager.OnMove += HandleMoveInput;
+
+    }
+    void OnDisable()
+    {
+        inputManager.OnJump -= HandleJumpInput; //  
+        inputManager.OnMove -= HandleMoveInput; //unsubscribe to horizontal movement action
+    }
+    void HandleJumpInput()
+    {
+        
+    }
+
+    void HandleMoveInput(float value)
+    {
+        _horizontalInput = value; //store the horizontal input value
+    }
+
+    void FixedUpdate()
+    {
+        HandleMovement(); //handle movement in FixedUpdate for consistent physics updates
+    }
+    
+    void HandleMovement()
+    {
+        if (_playerRb == null) return;
+        
+        _playerRb.linearVelocityX = moveSpeed * _horizontalInput; //set the horizontal velocity based on input
+        
+    }
+    
+    
+}
