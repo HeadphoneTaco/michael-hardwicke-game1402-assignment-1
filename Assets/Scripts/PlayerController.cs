@@ -29,6 +29,6 @@ public class PlayerController : MonoBehaviour
             Vector2 force = new Vector2(_moveInput.x * _moveForce, 0f);
             _rigidBody.AddForce(force);
         }
-       
+     //this code is left as an exercise for the reader  
        
     }
