@@ -7,9 +7,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpforce = 15f;
     
     [SerializeField] private InputManager inputManager;
+   
+    [Header("Ground Check")]
+    [SerializeField] private LayerMask groundLayer;
 
-    private float _horizontalInput = 0f;
+    [SerializeField] private Vector2 startPointOffset;
+    [SerializeField] private float groundCheckDistance;
+    
+    
+    private float _horizontalInput;
     private Rigidbody2D _playerRb;
+    private bool _isOnGround;
 
     private void Awake()
     {
@@ -23,13 +31,22 @@ public class PlayerController : MonoBehaviour
     }
     void OnDisable()
     {
-        inputManager.OnJump -= HandleJumpInput; //  
+        inputManager.OnJump -= HandleJumpInput; //unsubscribe to jump action
         inputManager.OnMove -= HandleMoveInput; //unsubscribe to horizontal movement action
     }
+
     void HandleJumpInput()
     {
-        
+        // apply the jump force
+        if (_playerRb == null) return;
+        if (_isOnGround)
+        {
+
+            _playerRb.AddForceY(jumpforce, ForceMode2D.Impulse);
+        }
     }
+
+
 
     void HandleMoveInput(float value)
     {
@@ -39,6 +56,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         HandleMovement(); //handle movement in FixedUpdate for consistent physics updates
+        GroundCheck();
     }
     
     void HandleMovement()
@@ -49,5 +67,15 @@ public class PlayerController : MonoBehaviour
         
     }
     
-    
+    void GroundCheck()
+    {
+        _isOnGround= Physics2D.Raycast((Vector2)transform.position + startPointOffset, Vector2.down, groundCheckDistance, groundLayer);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Debug.DrawLine((Vector2)transform.position + startPointOffset,
+            (Vector2)transform.position + startPointOffset + Vector2.down * groundCheckDistance,
+            _isOnGround ? Color.green : Color.red);
+    }
 }
