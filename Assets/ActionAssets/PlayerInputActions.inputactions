@@ -16,10 +16,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Move",
+                    "name": "Horizontal",
                     "type": "Value",
                     "id": "23b28b45-2134-45ca-b2fc-c668dec04451",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -49,70 +49,48 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "68aa21e3-b711-4a42-8b59-e2339d329b03",
-                    "path": "<Gamepad>/leftStick",
+                    "name": "1D Axis",
+                    "id": "5e48f26a-114a-48d2-9f78-3d3e22213171",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "2D Vector",
-                    "id": "d9f98fd8-3542-451f-b1cc-4fcd6799c3f3",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "action": "Horizontal",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "43bbf961-eaea-4812-b8f6-505d49b35638",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "84912520-dd62-4216-a101-44b96affc1df",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "b57ac713-bf39-4f3e-a9ef-a601729dc9e4",
+                    "name": "negative",
+                    "id": "34349ba9-e83f-4bfd-b431-50d523751fcd",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Horizontal",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "bbfd86c2-9b65-45c2-8063-f660b69bd479",
+                    "name": "positive",
+                    "id": "b1fe6e99-4e66-46af-a9a9-c5be68a6c536",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Horizontal",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "fcf7b4a9-ead4-49ac-95ab-a5cc6ca3edf6",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Horizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

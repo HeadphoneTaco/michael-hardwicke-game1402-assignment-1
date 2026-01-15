@@ -1,53 +1,51 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Events;
+
 
 public class InputManager : MonoBehaviour
 {
-    private PlayerController _playerController;
-    private PlayerInputActions _inputActions;
+    private PlayerInputActions _playerInputActions;
+
+    public System.Action OnJump;
+    public System.Action<float> OnMove;
     
     private void Awake()
     {
     
-        _playerController = GetComponent<PlayerController>(); //Get reference to PlayerController component
-        _inputActions = new PlayerInputActions(); //create an object of the class PlayerInputActions
+        _playerInputActions = new PlayerInputActions(); //create an instance of the class PlayerInputActions
+        _playerInputActions.Enable(); //Enable the input actions
+        
     }
 
     private void OnEnable()
     {
-        _inputActions.Player.Enable(); //Activate PlayerInputActions object to listen to key inputs
-        _inputActions.Player.Move.performed += OnMove;
-        _inputActions.Player.Move.canceled += OnMoveCanceled;
-        _inputActions.Player.Jump.performed += OnJump;
+        _playerInputActions.Player.Jump.performed += OnJumpPressed; //subscribe to jump action
+        //_playerInputActions.Player.Horizontal.performed += OnMovement; //subscribe to horizontal movement action
+    
         
     }
     
     private void OnDisable()
     {
-        _inputActions.Player.Move.performed -= OnMove;
-        _inputActions.Player.Move.canceled -= OnMoveCanceled;
-        _inputActions.Player.Jump.performed -= OnJump;
-        _inputActions.Player.Disable(); //Deactivate PlayerInputActions object to stop listening to key inputs
+        _playerInputActions.Player.Jump.performed -= OnJumpPressed; //unsubscribe to jump action
+        //_playerInputActions.Player.Horizontal.performed -= OnMovement; //unsubscribe to horizontal movement action
+        
     }
-
-    private void OnMove(InputAction.CallbackContext context)
+    private void OnJumpPressed(InputAction.CallbackContext context)
     {
-        Vector2 input = context.ReadValue<Vector2>();
-        _playerController.SetMoveInput(input); //Log move input for debugging
-    }
-
-    private void OnMoveCanceled(InputAction.CallbackContext context)
-    {
-        _playerController.SetMoveInput(Vector2.zero);
-        Debug.Log("Canceled"); //Log cancel movement action for debugging
-    }
-    
-    private void OnJump(InputAction.CallbackContext context)
-    {
-        _playerController.Jump();
         Debug.Log("Jump"); //Log jump action for debugging
+        OnJump?.Invoke(); //Invoke the OnJump action if there are any subscribers
+    }
+
+    private void OnMovement()
+    {
+        
+        OnMove?.Invoke(_playerInputActions.Player.Horizontal.ReadValue<float>()); 
+
+    }
+
+    void Update()
+    {
+        OnMovement();
     }
 }
