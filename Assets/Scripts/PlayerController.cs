@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpforce = 15f;
-    
+   
     [SerializeField] private InputManager inputManager;
    
     [Header("Ground Check")]
@@ -25,8 +24,8 @@ public class PlayerController : MonoBehaviour
     }
     void OnEnable()
     {
-        inputManager.OnJump += HandleJumpInput;
-        inputManager.OnMove += HandleMoveInput;
+        inputManager.OnJump += HandleJumpInput; //subscribe to jump action
+        inputManager.OnMove += HandleMoveInput; //subscribe to horizontal movement action
 
     }
     void OnDisable()
@@ -41,12 +40,9 @@ public class PlayerController : MonoBehaviour
         if (_playerRb == null) return;
         if (_isOnGround)
         {
-
             _playerRb.AddForceY(jumpforce, ForceMode2D.Impulse);
         }
     }
-
-
 
     void HandleMoveInput(float value)
     {
@@ -62,9 +58,7 @@ public class PlayerController : MonoBehaviour
     void HandleMovement()
     {
         if (_playerRb == null) return;
-        
         _playerRb.linearVelocityX = moveSpeed * _horizontalInput; //set the horizontal velocity based on input
-        
     }
     
     void GroundCheck()
