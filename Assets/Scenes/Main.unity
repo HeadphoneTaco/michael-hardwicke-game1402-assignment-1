@@ -350,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 42833208}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.91, z: 0}
+  m_LocalPosition: {x: 0.01, y: -1.69, z: 0}
   m_LocalScale: {x: 0.23703705, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -531,7 +531,7 @@ Transform:
   m_GameObject: {fileID: 96024311}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.657, y: -0.08, z: 0}
+  m_LocalPosition: {x: -6.32, y: -0.08, z: 0}
   m_LocalScale: {x: 0.23703705, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6000,7 +6000,7 @@ Transform:
   m_GameObject: {fileID: 241932999}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.565, y: -0.05, z: 0}
+  m_LocalPosition: {x: 4.62, y: -0.05, z: 0}
   m_LocalScale: {x: 0.23703705, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6778,8 +6778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   cycleTime: 5
-  point1: {fileID: 1168008309}
-  point2: {fileID: 1945616753}
+  startpoint: {fileID: 1168008309}
+  endpoint: {fileID: 1945616753}
 --- !u!50 &475634382
 Rigidbody2D:
   serializedVersion: 5
@@ -7462,8 +7462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   cycleTime: 5
-  point1: {fileID: 241933000}
-  point2: {fileID: 96024312}
+  startpoint: {fileID: 241933000}
+  endpoint: {fileID: 96024312}
 --- !u!50 &571495867
 Rigidbody2D:
   serializedVersion: 5
@@ -7704,7 +7704,7 @@ Transform:
   m_GameObject: {fileID: 622853598}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 11.58, z: 0}
+  m_LocalPosition: {x: 0.1, y: 1.24, z: 0}
   m_LocalScale: {x: 0.23703705, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7802,8 +7802,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   cycleTime: 5
-  point1: {fileID: 114482925}
-  point2: {fileID: 1413335823}
+  startpoint: {fileID: 114482925}
+  endpoint: {fileID: 1413335823}
 --- !u!50 &642774558
 Rigidbody2D:
   serializedVersion: 5
@@ -9220,8 +9220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   cycleTime: 5
-  point1: {fileID: 1861948575}
-  point2: {fileID: 2119073798}
+  startpoint: {fileID: 1861948575}
+  endpoint: {fileID: 2119073798}
 --- !u!50 &928897143
 Rigidbody2D:
   serializedVersion: 5
@@ -10388,7 +10388,7 @@ Transform:
   m_GameObject: {fileID: 1172943220}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.65, y: 1.14, z: 0}
+  m_LocalPosition: {x: -5.65, y: 0.36, z: 0}
   m_LocalScale: {x: 4.21875, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10541,8 +10541,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   cycleTime: 5
-  point1: {fileID: 42833209}
-  point2: {fileID: 622853599}
+  startpoint: {fileID: 42833209}
+  endpoint: {fileID: 622853599}
 --- !u!1 &1196720588
 GameObject:
   m_ObjectHideFlags: 0
@@ -11543,8 +11543,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   cycleTime: 5
-  point1: {fileID: 125260029}
-  point2: {fileID: 838614900}
+  startpoint: {fileID: 125260029}
+  endpoint: {fileID: 838614900}
 --- !u!50 &1470631198
 Rigidbody2D:
   serializedVersion: 5

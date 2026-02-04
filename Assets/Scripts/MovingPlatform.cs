@@ -4,8 +4,8 @@ public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] private float cycleTime = 5f;
 
-    [SerializeField] private Transform point1;
-    [SerializeField] private Transform point2;
+    [SerializeField] private Transform startpoint;
+    [SerializeField] private Transform endpoint;
     
     private float _currentTime;
     private float _speed = 1f;
@@ -19,7 +19,7 @@ public class MovingPlatform : MonoBehaviour
 
         float t = _currentTime / cycleTime;
         
-        transform.position = Vector3.Lerp(point1.position, point2.position, t);
+        transform.position = Vector3.Lerp(startpoint.position, endpoint.position, t);
 
     }
 }
