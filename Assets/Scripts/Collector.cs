@@ -10,7 +10,5 @@ public class Collector : MonoBehaviour
         {
             otherCollectable.OnCollect();
         }
-        
-        
     }
 }

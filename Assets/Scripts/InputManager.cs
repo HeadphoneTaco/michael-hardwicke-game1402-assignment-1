@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private PlayerInputActions _playerInputActions;
-
     public System.Action OnJump;
     public System.Action<float> OnMove;
     
@@ -18,15 +17,12 @@ public class InputManager : MonoBehaviour
     {
         _playerInputActions.Player.Jump.performed += OnJumpPressed; //subscribe to jump action
         //_playerInputActions.Player.Horizontal.performed += OnMovement; //subscribe to horizontal movement action
-    
-        
     }
     
     private void OnDisable()
     {
         _playerInputActions.Player.Jump.performed -= OnJumpPressed; //unsubscribe to jump action
         //_playerInputActions.Player.Horizontal.performed -= OnMovement; //unsubscribe to horizontal movement action
-        
     }
     private void OnJumpPressed(InputAction.CallbackContext context)
     {
@@ -36,9 +32,7 @@ public class InputManager : MonoBehaviour
 
     private void OnMovement()
     {
-        
         OnMove?.Invoke(_playerInputActions.Player.Horizontal.ReadValue<float>()); 
-
     }
 
     void Update()
