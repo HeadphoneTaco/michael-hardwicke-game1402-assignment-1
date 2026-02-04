@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class InputManager : MonoBehaviour
 {
     private PlayerInputActions _playerInputActions;
@@ -11,10 +10,8 @@ public class InputManager : MonoBehaviour
     
     private void Awake()
     {
-    
         _playerInputActions = new PlayerInputActions(); //create an instance of the class PlayerInputActions
         _playerInputActions.Enable(); //Enable the input actions
-        
     }
 
     private void OnEnable()
