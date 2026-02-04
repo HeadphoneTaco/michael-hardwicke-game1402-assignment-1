@@ -16,10 +16,15 @@ public class MovingPlatform : MonoBehaviour
 
         if (_currentTime < cycleTime) _speed = -1f;
         if (_currentTime > 0f) _speed = 1f;
-
-        float t = _currentTime / cycleTime;
         
+        
+
+        //float t = _currentTime / cycleTime;
+        
+        
+        float t = Mathf.PingPong(Time.time / cycleTime, 1f);
         transform.position = Vector3.Lerp(startpoint.position, endpoint.position, t);
+        
 
     }
 }
